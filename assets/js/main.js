@@ -77,22 +77,11 @@ function progressbarAnimation(target) {
       );
     }
   }, 300);
-
-  // for(let i = 0;i<=maxWidth;i+5){
-  //   setTimeout(function(){
-  //     $(target+ " .progress-bar")..html(
-  //       '<div class="prog-b-percent ml-auto text-right px-2">' +
-  //         percent +
-  //         "%</div>"
-  //     );
-  //   },300)
-  //}
 }
 
 function callbackFunc(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      // const leftAnimation = ["#profile", "#who-am-i", "#who-am-i-text"];
       const rightAnimation = [
         ".ui-progress-bar",
         ".rdbs-progress-bar",
@@ -113,8 +102,8 @@ function callbackFunc(entries, observer) {
         ".css",
         ".html",
       ];
-      animataionDelay('.about-left','w3-animate-left',500);
-      animataionDelay('.about-right','w3-animate-right',500)
+      animataionDelay(".about-left", "w3-animate-left", 500);
+      animataionDelay(".about-right", "w3-animate-right", 500);
     }
   });
 
@@ -172,11 +161,22 @@ function projectContentFunc(entries, observer) {
         ".kitty-chicha",
         ".todo-list",
         ".quiz-bee",
-        ".book-storage"
+        ".book-storage",
       ];
       procjetContent.forEach((e, i) =>
         animataionDelay(e, "animation-flip", i * 500)
       );
+    }
+  });
+}
+
+function abilitiesFunc(entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const abilities = [".fast", ".responsive", ".aha", ".dynamic"];
+      abilities.forEach((e, i) => {
+        animataionDelay(e, "w3-animate-bottom", i * 500);
+      });
     }
   });
 }
@@ -205,6 +205,12 @@ const projectContentOption = {
   threshold: 0.7,
 };
 
+const abilitiesOption = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.5,
+};
+
 let observerAbout = new IntersectionObserver(callbackFuncAbout, aboutOption);
 let observer = new IntersectionObserver(callbackFunc, profSkillAbout);
 let projectObserver = new IntersectionObserver(
@@ -217,10 +223,17 @@ let projectContentObserver = new IntersectionObserver(
   projectContentOption
 );
 
+let abilitiesObserver = new IntersectionObserver(
+  abilitiesFunc,
+  abilitiesOption
+);
+
 observerAbout.observe(document.getElementById("about"));
 observer.observe(document.getElementById("about"));
 projectObserver.observe(document.getElementById("project"));
 projectContentObserver.observe(document.getElementById("project"));
+abilitiesObserver.observe(document.getElementById("abilities"))
+
 // $( document ).ready(function() {
 //   new WOW().init();
 // });

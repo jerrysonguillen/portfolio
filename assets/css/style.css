@@ -256,6 +256,18 @@ image {
 .book-storage {
   opacity: 0;
 }
+.fast{
+  opacity: 0;
+}
+.responsive {
+  opacity: 0;
+}
+.aha{
+  opacity: 0;
+}
+.dynamic{
+  opacity: 0;
+}
 
 @media (max-width: 820px) {
 
@@ -286,9 +298,16 @@ image {
   .book-storage {
     opacity: 1;
   }
-  /* .bg-dark-opacity {
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.5),
-    rgba(0,0,0,0.5)),url(./../images/pacman.jpg);
-  } */
+  .fast{
+    opacity: 1;
+  }
+  .responsive {
+    opacity: 1;
+  }
+  .aha{
+    opacity: 1;
+  }
+  .dynamic{
+    opacity: 1;
+  }
 }
